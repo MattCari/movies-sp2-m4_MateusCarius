@@ -42,7 +42,6 @@ const getMovies = async (req: Request, res: Response): Promise<Response> => {
   const queryResult: MovieResult = await client.query(queryString);
   const allMovies = queryResult.rows;
 
-  console.log(category);
   return res.status(200).json(allMovies);
 };
 const getMovieById = async (req: Request, res: Response): Promise<Response> => {
@@ -78,7 +77,7 @@ const updateMovie = async (req: Request, res: Response): Promise<Response> => {
   const queryResult: MovieResult = await client.query(queryString);
   const updatedMovie = queryResult.rows[0];
 
-  return res.status(201).json(updatedMovie);
+  return res.status(200).json(updatedMovie);
 };
 const deleteMovie = async (req: Request, res: Response): Promise<Response> => {
   const { id } = req.params;

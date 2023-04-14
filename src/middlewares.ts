@@ -28,6 +28,7 @@ const nameAlreadyExists =  async (req: Request, res: Response, next: NextFunctio
     const queryResult: MovieResult = await client.query(queryString)
     console.log(queryResult.rows)
     if(queryResult.rowCount > 0){
+       delete req.body
         return res.status(409).json({
             error: "Name already exists!"
         })
